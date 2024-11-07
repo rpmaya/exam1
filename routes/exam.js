@@ -86,7 +86,7 @@ router.post("/ipfs", validatorIPFSContent, createContent);
 
 /**
  * @openapi
- * /api/nft/{ipfsHash}:
+ * /api/ipfs/{ipfsHash}:
  *  get:
  *      tags:
  *      - IPFS
@@ -105,6 +105,6 @@ router.post("/ipfs", validatorIPFSContent, createContent);
  *          '500':
  *              description: Internal server error
  */
-router.get("/ipfs", validatorIPFSHash, getContent);
+router.get("/ipfs/:ipfsHash", validatorIPFSHash, getContent);
 
 module.exports = router;
