@@ -3,8 +3,8 @@ const uploadJSON = async (content) => {
 
   const headers = {
       'Content-Type': 'application/json',
-      pinata_api_key: pinataApiKey,
-      pinata_secret_api_key: pinataSecretApiKey,
+      pinata_api_key: process.env.PINATA_KEY,
+      pinata_secret_api_key: process.env.PINATA_SECRET
   };
 
   try {
@@ -15,13 +15,13 @@ const uploadJSON = async (content) => {
       });
 
       if (!response.ok) {
-          throw new Error('Error al subir a JSON a Pinata');
+          throw new Error('Error uploading JSON to Pinata');
       }
 
       const data = await response.json();
       return data.IpfsHash;
   } catch (error) {
-      console.error('Error al subir archivo a Pinata:', error);
+      console.error('Error uploading data to Pinata:', error);
   }
 }    
 

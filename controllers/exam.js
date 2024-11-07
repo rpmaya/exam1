@@ -70,9 +70,9 @@ const getBalance = async (req, res) => {
 
 const createContent = async (req, res) => {
   const { content } = matchedData(req);
-  const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
+  //const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
   try {
-    const ipfsHash = uploadJSON(content);
+    const ipfsHash = await uploadJSON(content);
     const response = await IPFSModel.create({content, ipfsHash});
     res.send(response);
   }catch(error) {

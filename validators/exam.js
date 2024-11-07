@@ -18,7 +18,7 @@ const validatorGetBalance = [
 ]
 
 const validatorIPFSContent = [
-  check("content").exists().notEmpty(),
+  check("content").exists().notEmpty().isObject(),
   (req, res, next) => {
     return validateResults(req, res, next)
   }
